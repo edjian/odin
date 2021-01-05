@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>odin</artifactId>
+        <groupId>com.diditech</groupId>
+        <version>3.10.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>odin-platform</artifactId>
+	<description>odin 商城服务</description>
+	<packaging>pom</packaging>
+
+	<!--项目子模块-->
+	<modules>
+		<module>odin-admin-platform</module>
+		<module>odin-wechat-platform</module>
+		<module>odin-writeoff-platform</module>
+	</modules>
+
+</project>

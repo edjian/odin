@@ -1,0 +1,6 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.diditech.odin.common.security.component.DiditechTokenEnhancer,\
+  com.diditech.odin.common.security.component.DiditechSecurityInnerAspect,\
+  com.diditech.odin.common.security.listener.AuthenticationFailureEventListener,\
+  com.diditech.odin.common.security.listener.AuthenticationSuccessEventListener
+

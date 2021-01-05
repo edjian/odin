@@ -1,0 +1,9 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.diditech.odin.common.data.cache.RedisTemplateConfig,\
+    com.diditech.odin.common.data.cache.RedisCacheManagerConfig,\
+    com.diditech.odin.common.data.cache.RedisCacheAutoConfiguration,\
+    com.diditech.odin.common.data.tenant.DiditechTenantConfigProperties,\
+    com.diditech.odin.common.data.tenant.TenantContextHolderFilter,\
+    com.diditech.odin.common.data.tenant.DiditechTenantConfiguration,\
+    com.diditech.odin.common.data.mybatis.MybatisPlusConfiguration,\
+    com.diditech.odin.common.data.resolver.WebMvcConfig

@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.diditech.odin.common.core.config.JacksonConfig,\
+  com.diditech.odin.common.core.config.MessageSourceConfig,\
+  com.diditech.odin.common.core.config.RestTemplateConfig,\
+  com.diditech.odin.common.core.util.SpringContextHolder

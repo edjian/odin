@@ -1,0 +1,152 @@
+# 使用说明 V3.8.0
+# 1. 使用docker-compose  宿主机不需要配置host来发现
+# 2. 无需修改源码，根目录  docker-compose up 即可
+# 3. 静静等待服务启动
+
+version: '2'
+services:
+  odin-mysql:
+    build:
+      context: ./db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    container_name: odin-mysql
+    image: odin-mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./odin-mysql:/var/lib/mysql
+    command: --lower_case_table_names=1
+
+  odin-xxl:
+    container_name: odin-xxl
+    image: xuxueli/xxl-job-admin:2.2.0
+    restart: always
+    environment:
+      PARAMS: "--server.port=9080 --spring.datasource.url=jdbc:mysql://odin-mysql:3306/odin_job?Unicode=true&characterEncoding=UTF-8 --spring.datasource.username=root --spring.datasource.password=root"
+    ports:
+      - 9080:9080
+
+  odin-redis:
+    container_name: odin-redis
+    image: redis:5.0.7
+    restart: always
+    ports:
+      - 6379:6379
+
+  odin-minio:
+    container_name: odin-minio
+    image: minio/minio
+    command: server /data
+    ports:
+      - 9000:9000
+    volumes:
+      - ./data:/data
+      - ./config:/root/.minio
+    environment:
+      - MINIO_DOMAIN=odin-minio
+      - MINIO_ACCESS_KEY=odin
+      - MINIO_SECRET_KEY=odin
+
+  odin-register:
+    build:
+      context: ./odin-register
+    restart: always
+    container_name: odin-register
+    image: odin-register
+    ports:
+      - 8848:8848
+
+  odin-gateway:
+    build:
+      context: ./odin-gateway
+    restart: always
+    container_name: odin-gateway
+    image: odin-gateway
+    ports:
+      - 9999:9999
+
+  odin-auth:
+    build:
+      context: ./odin-auth
+    restart: always
+    container_name: odin-auth
+    image: odin-auth
+
+  odin-upms:
+    build:
+      context: ./odin-upms/odin-upms-biz
+    restart: always
+    container_name: odin-upms
+    image: odin-upms
+
+  odin-monitor:
+    build:
+      context: ./odin-visual/odin-monitor
+    restart: always
+    image: odin-monitor
+    container_name: odin-monitor
+    ports:
+      - 5001:5001
+
+  odin-daemon-quartz:
+    build:
+      context: ./odin-visual/odin-daemon-quartz
+    restart: always
+    image: odin-daemon-quartz
+    container_name: odin-daemon-quartz
+
+  odin-daemon-elastic-job:
+    build:
+      context: ./odin-visual/odin-daemon-elastic-job
+    restart: always
+    image: odin-daemon-elastic-job
+    container_name: odin-daemon-elastic-job
+
+  odin-codegen:
+    build:
+      context: ./odin-visual/odin-codegen
+    restart: always
+    image: odin-codegen
+    container_name: odin-codegen
+
+  odin-mp-platform:
+    build:
+      context: ./odin-visual/odin-mp-platform
+    restart: always
+    image: odin-mp-platform
+    container_name: odin-mp-platform
+
+  odin-pay-platform:
+    build:
+      context: ./odin-visual/odin-pay-platform
+    restart: always
+    image: odin-pay-platform
+    container_name: odin-pay-platform
+
+  odin-oa-platform:
+    build:
+      context: ./odin-visual/odin-oa-platform
+    restart: always
+    image: odin-oa-platform
+    container_name: odin-oa-platform
+
+  odin-tx-manager:
+    build:
+      context: ./odin-visual/odin-tx-manager
+    restart: always
+    image: odin-tx-manager
+    container_name: odin-tx-manager
+    ports:
+      - 5004:5004
+      - 9998:9998
+
+  odin-sentinel:
+    build:
+      context: ./odin-visual/odin-sentinel-dashboard
+    restart: always
+    image: odin-sentinel
+    container_name: odin-sentinel
+    ports:
+      - 5020:5020
