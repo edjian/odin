@@ -29,10 +29,10 @@ import org.springframework.cloud.client.SpringCloudApplication;
  */
 @SpringCloudApplication
 @EnableMallFeignClients
-public class MallAuthApplication {
+public class OdinAuthApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MallAuthApplication.class, args);
+		SpringApplication.run(OdinAuthApplication.class, args);
 	}
 
 }

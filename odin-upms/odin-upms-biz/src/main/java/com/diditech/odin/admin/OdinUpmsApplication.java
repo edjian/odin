@@ -35,10 +35,10 @@ import org.springframework.cloud.client.SpringCloudApplication;
 @SpringCloudApplication
 @EnableMallFeignClients
 @EnableDiditechResourceServer
-public class MallUpmsApplication {
+public class OdinUpmsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MallUpmsApplication.class, args);
+		SpringApplication.run(OdinUpmsApplication.class, args);
 	}
 
 }

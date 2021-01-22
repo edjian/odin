@@ -29,10 +29,10 @@ import org.springframework.cloud.client.SpringCloudApplication;
  */
 @EnableMallDynamicRoute
 @SpringCloudApplication
-public class MallGatewayApplication {
+public class OdinGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MallGatewayApplication.class, args);
+		SpringApplication.run(OdinGatewayApplication.class, args);
 	}
 
 }

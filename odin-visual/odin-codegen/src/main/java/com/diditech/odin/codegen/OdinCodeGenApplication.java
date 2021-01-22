@@ -33,10 +33,10 @@ import org.springframework.cloud.client.SpringCloudApplication;
 @EnableMallFeignClients
 @SpringCloudApplication
 @EnableDiditechResourceServer
-public class DiditechCodeGenApplication {
+public class OdinCodeGenApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DiditechCodeGenApplication.class, args);
+		SpringApplication.run(OdinCodeGenApplication.class, args);
 	}
 
 }
